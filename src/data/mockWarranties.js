@@ -1,0 +1,32 @@
+export const mockWarranties = [
+  {
+    id: 'war_001',
+    property_eircode: 'D15X2Y3',
+    job_id: 'job_001',
+    trade_name: 'Mike Brennan',
+    category: 'PLUMBING',
+    description: 'Mixer tap — manufacturer warranty',
+    warranty_expiry_date: '2027-12-06',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'war_002',
+    property_eircode: 'D15X2Y3',
+    job_id: 'job_003',
+    trade_name: 'Ciar\u00e1n Walsh',
+    category: 'ELECTRICAL',
+    description: 'Consumer unit upgrade — Safe Electric cert',
+    warranty_expiry_date: '2028-02-22',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'war_003',
+    property_eircode: 'D15X2Y3',
+    job_id: 'job_004',
+    trade_name: 'Padraig Doyle',
+    category: 'HEATING_GAS',
+    description: 'Boiler service — parts warranty',
+    warranty_expiry_date: '2026-08-14',
+    status: 'ACTIVE',
+  },
+];

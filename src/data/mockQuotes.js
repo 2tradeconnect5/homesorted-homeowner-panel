@@ -1,0 +1,32 @@
+export const mockQuotes = [
+  {
+    id: 'q_001',
+    job_id: 'job_007',
+    trade_name: 'Murphy Carpentry',
+    estimated_cost: 420.0,
+    estimated_duration: '2 days',
+    status: 'PENDING',
+    submitted_at: '2026-04-04T10:00:00Z',
+    trade_verified: true,
+  },
+  {
+    id: 'q_002',
+    job_id: 'job_007',
+    trade_name: 'Dublin Woodwork Co.',
+    estimated_cost: 375.0,
+    estimated_duration: '1.5 days',
+    status: 'PENDING',
+    submitted_at: '2026-04-04T11:30:00Z',
+    trade_verified: true,
+  },
+  {
+    id: 'q_003',
+    job_id: 'job_007',
+    trade_name: "O'Neill Joinery",
+    estimated_cost: 510.0,
+    estimated_duration: '3 days',
+    status: 'PENDING',
+    submitted_at: '2026-04-04T14:00:00Z',
+    trade_verified: false,
+  },
+];

@@ -1,0 +1,16 @@
+export const mockHomeowner = {
+  id: 'ho_001',
+  first_name: 'Sarah',
+  last_name: "O'Brien",
+  phone: '353871234567',
+  email: 'sarah.obrien@gmail.com',
+  registration_date: '2025-11-15T10:30:00Z',
+  account_state: 'ACTIVE',
+  is_premium: false,
+  premium_trial_months_remaining: 0,
+  premium_started_at: null,
+  premium_source: null,
+  premium_billing_active: false,
+  marketing_opt_in: true,
+  properties: ['D15X2Y3', 'K67F8H2'],
+};
