@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Loader2 } from 'lucide-react';
@@ -12,6 +12,24 @@ export default function LoginPage() {
   const { requestOTP, verifyOTP, isLoading } = useAuth();
   const navigate = useNavigate();
   const otpRefs = useRef([]);
+  const phoneRef = useRef(null);
+
+  const handlePhoneChange = useCallback((e) => {
+    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setPhone(digits);
+  }, []);
+
+  const handleDemoLogin = async () => {
+    setError('');
+    setPhone('871234567');
+    const otpResult = await requestOTP('871234567');
+    if (otpResult.success) {
+      const result = await verifyOTP('871234567', '332244', true);
+      if (result.success) {
+        navigate('/dashboard');
+      }
+    }
+  };
 
   const handleRequestOTP = async (e) => {
     e.preventDefault();
@@ -101,9 +119,11 @@ export default function LoginPage() {
                   +353
                 </div>
                 <input
+                  ref={phoneRef}
                   type="tel"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                  onChange={handlePhoneChange}
+                  onInput={handlePhoneChange}
                   placeholder="87 123 4567"
                   className="flex-1 rounded-[10px] px-4 py-3.5 text-sm outline-none transition-colors"
                   style={{ border: '2px solid #E5E8E8', color: '#1F2937' }}
@@ -186,8 +206,16 @@ export default function LoginPage() {
         We'll send a one-time code to your WhatsApp
       </p>
       <p className="text-xs mt-2 text-center" style={{ color: '#9CA3AF' }}>
-        Demo: Use any phone number, OTP is 123456
+        Demo: Use any phone number, OTP is 332244
       </p>
+      <button
+        onClick={handleDemoLogin}
+        disabled={isLoading}
+        className="mt-3 px-5 py-2 rounded-[10px] text-xs font-semibold active:scale-[0.98] transition-transform cursor-pointer disabled:opacity-50"
+        style={{ border: '2px solid #E5E8E8', color: '#566573' }}
+      >
+        {isLoading ? 'Logging in...' : 'Quick Demo Login'}
+      </button>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
   const verifyOTP = async (phone, code, rememberMe) => {
     setIsLoading(true);
     await new Promise((r) => setTimeout(r, 800));
-    if (code === '123456') {
+    if (code === '332244') {
       const user = { ...mockHomeowner, phone: `353${phone}` };
       setHomeowner(user);
       if (rememberMe) {
@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
       return { success: true };
     }
     setIsLoading(false);
-    return { success: false, message: 'Invalid code. Try 123456 for demo.' };
+    return { success: false, message: 'Invalid code. Try 332244 for demo.' };
   };
 
   const logout = () => {
