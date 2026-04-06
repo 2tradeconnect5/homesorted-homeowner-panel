@@ -21,27 +21,18 @@ export function AuthProvider({ children }) {
     setIsLoading(false);
   }, []);
 
-  const requestOTP = async (phone) => {
+  const login = async (email, password) => {
     setIsLoading(true);
     await new Promise((r) => setTimeout(r, 800));
-    setIsLoading(false);
-    return { success: true, message: 'OTP sent via WhatsApp' };
-  };
-
-  const verifyOTP = async (phone, code, rememberMe) => {
-    setIsLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    if (code === '332244') {
-      const user = { ...mockHomeowner, phone: `353${phone}` };
+    if (email === 'robert@homesorted.ie' && password === 'HomeSorted7642489f') {
+      const user = { ...mockHomeowner };
       setHomeowner(user);
-      if (rememberMe) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       setIsLoading(false);
       return { success: true };
     }
     setIsLoading(false);
-    return { success: false, message: 'Invalid code. Try 332244 for demo.' };
+    return { success: false, message: 'Invalid email or password.' };
   };
 
   const logout = () => {
@@ -61,8 +52,7 @@ export function AuthProvider({ children }) {
         homeowner,
         isAuthenticated: !!homeowner,
         isLoading,
-        requestOTP,
-        verifyOTP,
+        login,
         logout,
         updateHomeowner,
       }}
